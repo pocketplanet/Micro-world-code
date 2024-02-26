@@ -46,16 +46,16 @@ void loop() {
       delay(1000);
 
 
-      Serial.print("air humidity: ");
+      Serial.print("airhumidity: ");
       Serial.print((int)h);
       Serial.print("% , ");
-      Serial.print("air temperature: ");
+      Serial.print("airtemperature: ");
       Serial.print((int)t);
       Serial.print("℃ , ");
-      Serial.print("Soil Moisture: ");
+      Serial.print("SoilMoisture: ");
       Serial.print((int)ASM);
       Serial.print("% , ");
-      Serial.print("Soil Temperature: ");
+      Serial.print("SoilTemperature: ");
       Serial.print((int)AST);
       Serial.print("℃ , ");
       Serial.print("PH: ");
