@@ -68,14 +68,14 @@ async def upload_data_to_firestore(d):
         # 使用當前時間作為資料鍵名
         current_time = time.strftime("%H:%M")
         # 取得當前日期的文檔參考
-        d["time"] = current_time
-        ref = db.collection("data").document(current_day)
-        doc = ref.get()
+        doc_ref = db.collection("data").document(current_day)
+        doc = doc_ref.get()
         # 確認文檔是否存在，如果不存在則創建新文檔
-        if doc:
-            ref.update({"data": firestore.ArrayUnion([d])})
-        else:
-            ref.set({})
+        if not doc.exists:
+            doc_ref.set({})
+            print("已創建新文檔：", current_day)
+        d["time"] = current_time
+        doc_ref.update({"data": firestore.ArrayUnion([d])})
         print("資料成功上傳到 Firestore！")
     except Exception as e:
         print("在 Firestore 中添加資料時出錯：", e)
