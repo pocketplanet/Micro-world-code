@@ -17,7 +17,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 # serial 讀取
-socket = serial.Serial("/dev/ttyAMA0", baudrate=9600, timeout=1)
+socket = serial.Serial("/dev/ttyUSB0", baudrate=9600, timeout=1)
 
 
 def on_snapshot(doc_snapshot, changes, read_time):
